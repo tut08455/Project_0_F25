@@ -13,16 +13,22 @@ char* rand_string_alloc(size_t size)
      return s;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    if(argc < 2) {
+        printf("Please pass in 1 command line argument for the length of the word.\n");
+        return(0);
+    }
+
+    size_t size = atoi(argv[1]);
+
     char *str;
-    size_t size = 10;  //specify a value for size of word
 
 	/* seed the randomizer */
 	srand( (unsigned)time(NULL) );
 
 	printf("Today's random word: ");
-    str = rand_string_alloc(size );
+    str = rand_string_alloc(size);
     printf("%s\n",str);
     free (str);
     
